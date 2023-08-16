@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="웹퍼블리셔 박승재의 포트폴리오입니다.">
+  <!-- sns 링크 대응 -->
+  <meta property="og:title" content="CREATIVE WEB PUBLISHER">
+  <meta property="og:image" content="./image/logo/logo.svg">
+  <meta property="og:description" content="웹퍼블리셔 박승재의 포트폴리오입니다.">
+  <title>CREATIVE WEB PUBLISHER</title>
+
+  <!-- 파비콘 -->
+  <link rel="apple-touch-icon" sizes="57x57" href="./image/favi/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./image/favi/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./image/favi/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./image/favi/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./image/favi/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./image/favi/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./image/favi/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./image/favi/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./image/favi/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./image/favi/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./image/favi/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./image/favi/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./image/favi/favicon-16x16.png">
+  <link rel="manifest" href="./image/favi/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./image/favi/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- lib css -->
+  <link rel="stylesheet" href="./lib/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./lib/sweetalert2/sweetalert2.min.css">
+
+  <!-- lib js -->
+  <script src="./lib/jquery-3.6.0.js"></script>
+  <script src="./lib/swiper/swiper-bundle.min.js"></script>
+  <script src="./lib/sweetalert2/sweetalert2.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- doc css -->
+  <link rel="stylesheet" href="./css/common/reset.css">
+  <link rel="stylesheet" href="./css/common/global.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- doc js -->
+  <script src="./js/component/global.js"></script>
+  <script src="./js/component/index.js"></script>
+
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+
+  <div class="sj_container flex">
+    <h1 class="hide">포트폴리오 메인 화면</h1>
+    
+    <!-- header -->
+    <header-bar></header-bar>
+    <!-- mo nav -->
+    <mo-nav></mo-nav>
+
+    <!-- main -->
+    <main class="flex">
+      <h2 class="hide">포트폴리오 메인 화면 콘텐츠 영역</h2>
+
+      <!-- home -->
+      <section class="main_visual" data-scroll="point">
+        <h3 class="hide">포트폴리오 메인 화면 메인 비주얼</h3>
+
+        <div class="inner_wrap flex">
+          <p class="title">
+            <span class="point_magenta" data-main-visual="title">CREATIVE</span><br>
+            <span data-main-visual="title">WEB</span><br>
+            <span data-main-visual="title">PUBLISHER</span>
+          </p>
+          <p class="sub">박승재의 포트폴리오</p>
+
+          <p class="cont">
+            <span>HTML5, CSS3, Javascript, JQuery</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="main_about" data-scroll="point" data-bg-color="white">
+        <h3 class="hide">포트폴리오 메인 화면 기타 영역</h3>
+
+        <div class="inner_wrap">
+          <p class="title title_global">
+            <span class="point_magenta">P</span>
+            <span>ROFILE</span>
+          </p>
+
+          <p class="cont">
+            <span>웹 표준 및 접근성을 준수하며, 반응형 웹 위주의 작업을 주로 진행하였습니다.</span><br>
+            <span>CSS & 자바스크립트를 통한 인터렉션 구현 및 SPA를 통한 작업에도 관심이 있습니다.</span>
+          </p>
+
+          <p class="link">
+            <a href="./image/file/career.pdf" download="carrer.pdf" class="carrer">이력서 다운받기</a>
+          </p>
+
+          <div class="profile_box flex">
+            <div class="photo">
+              <div class="circle">
+                <div class="card">
+                  <img src="./image/content/card.png" class="front" alt="명함 앞면 이미지">
+                  <img src="./image/content/card_back.png" class="back" alt="명함 뒷면 이미지">
+                </div>
+              </div>
+            </div>
+
+            <div class="info grid">
+              <div class="info_box">
+                <p class="title">ㆍDESIGN</p>
+                <p>- Illustrator</p>
+                <p>- Photoshop</p>
+              </div>
+  
+              <div class="info_box">
+                <p class="title">ㆍPUBLISHING</p>
+                <p>- HTML3</p>
+                <p>- CSS</p>
+                <p>- Javascript</p>
+                <p>- JQuery</p>
+              </div>
+  
+              <div class="info_box">
+                <p class="title">ㆍBROWSER</p>
+                <p>- Google Chrome</p>
+                <p>- Microsoft Edge</p>
+                <p></p>
+                <p>- Samsung browser</p>
+                <p>- Safari browser</p>
+                <p>- Kakao in-app browser</p>
+                <p>- Naver in-app browser</p>
+              </div>
+  
+              <div class="info_box">
+                <p class="title">ㆍLICENSE</p>
+                <p>- 웹디자인기능사</p>
+                <p>- 컴퓨터그래픽스운용기능사</p>
+                <p>- GTQ그래픽기술자격 1급</p>
+              </div>
+  
+              <div class="info_box">
+                <p class="title">ㆍTEAM</p>
+                <p>- SVN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- project -->
+      <section class="main_project" data-scroll="point">
+        <h3 class="hide">포트폴리오 메인 화면 프로젝트 영역</h3>
+
+        <div class="inner_wrap">
+          <p class="title title_global">
+            <span class="point_teal">P</span>
+            <span>ROJECT</span>
+          </p>
+
+          <p class="cont">
+            <span>이전 회사에서 진행했던 프로젝트 중, 현재 외부에 공개되어 있는 5개 사이트를 선정하였습니다.</span><br>
+            <span>첨부된 링크를 통해 작업물을 더 자세히 보실 수 있습니다.</span>
+          </p>
+
+          <article class="project_block">
+            <h4 class="hide">프로젝트 선택 영역</h4>
+
+            <ul class="project_list grid">
+              <!-- 1 -->
+              <li>
+                <a href="javascript:void(0);" title="The E-roon">
+                  <span class="img_box">
+                    <span class="stick stick1"></span>
+                    <span class="stick stick2"></span>
+                    <span class="stick stick3"></span>
+                    <span class="stick stick4"></span>
+                    <span class="stick stick5"></span>
+
+                    <img src="./image/content/eroon_thumb.png" alt="The E-roon">
+                  </span>
+                  <span class="project_title">The E-roon<br>주식회사 더이룬</span>
+                </a>
+              </li>
+              <!-- 2 -->
+              <li>
+                <a href="javascript:void(0);" title="톤즈 클리닉 & 톤 스파앤리조트">
+                  <span class="img_box">
+                    <span class="stick stick1"></span>
+                    <span class="stick stick2"></span>
+                    <span class="stick stick3"></span>
+                    <span class="stick stick4"></span>
+                    <span class="stick stick5"></span>
+
+                    <img src="./image/content/tones_thumb.png" alt="톤즈 클리닉 & 톤 스파앤리조트">
+                  </span>
+                  <span class="project_title">톤즈 클리닉 <br>& 톤 스파앤리조트</span>
+                </a>
+              </li>
+              <!-- 3 -->
+              <li>
+                <a href="javascript:void(0);" title="그로서리펍 스낵얌">
+                  <span class="img_box">
+                    <span class="stick stick1"></span>
+                    <span class="stick stick2"></span>
+                    <span class="stick stick3"></span>
+                    <span class="stick stick4"></span>
+                    <span class="stick stick5"></span>
+
+                    <img src="./image/content/snackyam_thumb.png" alt="그로서리펍 스낵얌">
+                  </span>
+                  <span class="project_title">그로서리펍 <br>스낵얌</span>
+                </a>
+              </li>
+              <!-- 4 -->
+              <li>
+                <a href="javascript:void(0);" title="버츄얼 유튜버 플랫폼 VLYFT">
+                  <span class="img_box">
+                    <span class="stick stick1"></span>
+                    <span class="stick stick2"></span>
+                    <span class="stick stick3"></span>
+                    <span class="stick stick4"></span>
+                    <span class="stick stick5"></span>
+
+                    <img src="./image/content/vlyft_thumb.png" alt="버츄얼 유튜버 플랫폼 VLYFT">
+                  </span>
+                  <span class="project_title">버츄얼 유튜버 플랫폼<br>VLYFT</span>
+                </a>
+              </li>
+              <!-- 5 -->
+              <li>
+                <a href="javascript:void(0);" title="메타버스 공간을 이용한 콘텐츠 AUMSSA">
+                  <span class="img_box">
+                    <span class="stick stick1"></span>
+                    <span class="stick stick2"></span>
+                    <span class="stick stick3"></span>
+                    <span class="stick stick4"></span>
+                    <span class="stick stick5"></span>
+
+                    <img src="./image/content/aumssa_thumb.png" alt="버츄얼 유튜버 플랫폼 VLYFT">
+                  </span>
+                  <span class="project_title">메타버스 공간을 이용한 콘텐츠 AUMSSA</span>
+                </a>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- footer -->
+    <footer-bar></footer-bar>
+
+    <!-- pops -->
+    <project-popup></project-popup>
+    <email-popup></email-popup>
+  </div>
+
+  <!-- doc js -->
+  <script src="./js/common/view.js"></script>
+  <script src="./js/common/header.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>
