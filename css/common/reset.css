@@ -1,0 +1,142 @@
+/* css 기본서식 리셋 */
+* {margin: 0; padding: 0; box-sizing: border-box; word-break: keep-all; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-wrap: balance;}
+html, body {font-size: 16px;}
+body {overflow-x: hidden;}
+ul, ol, li {list-style: none;}
+a {text-decoration: none; color: inherit;}
+a:focus {outline: none;}
+a, button {cursor: pointer;}
+button {border: none; outline: none; background-color: none; font-size: 1rem;}
+button:focus {outline: none;}
+label {user-select: none;}
+div, img, svg, main, section, article, header, footer {width: 100%;}
+form {width: 100%;}
+
+/* input */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-out;
+}
+
+textarea {resize: none;}
+/* css 기본서식 리셋 끝 */
+
+/* 공통 클래스 */
+/* css 변수 */
+:root {
+    accent-color: var(--primary-color);
+
+    /* 컬러 가이드 */
+    /* 무채색 계열 */
+    --gray10: #ebeaea;
+    --gray30: #c2c1c1;
+    --gray50: #999797;
+    --gray70: #707070;
+    --gray80: #555;
+
+    --dark-gray10: #f9fafc;
+    --dark-gray20: #f2f4f6;
+    --dark-gray40: #788893;
+    --dark-gray70: #303550;
+    --dark-gray80: #2a2e47;
+    --dark-gray90: #1e233e;
+    --dark-gray100: #0c0e18;
+
+    /* 네온 계열 */
+    --neon-magenta: #ff0081;
+    --neon-violet: #8b03ff;
+    --neon-teal: #27d4b6;
+    --neon-lightgreen: #33ff04;
+    --neon-lime: #bdea14;
+    --neon-orange: #ff9b00;
+    --neon-hotpink: #fc00ff;
+    --neon-mint: #00ffa0;
+    --neon-sky: #008fff;
+    --neon-yellow: #faeb2c;
+    --neon-purple: #3d144c;
+
+    /* 파스텔 계열 */
+    --pastel-red: #ffdddd;
+    --pastel-orange: #ffeedd;
+    --pastel-yellow: #ffffdd;
+    --pastel-green: #eeffdd;
+    --pastel-teal: #ddfff6;
+    --pastel-blue: #ddffff;
+    --pastel-indigo: #ddf6ff;
+    --pastel-lavender: #dde5ff;
+    --pastel-purple : #e5ddff;
+
+    /* 테마 색상 */
+    --primary-color: #0189ff;
+    --secondary-color: #00a4e5;
+    --point-color: #00a4e5;
+    --text-base: #fff;
+    
+    /* 파생 색상 */
+    --bg-color: var(--dark-gray100);
+    --gradient-base: linear-gradient(271.29deg, var(--primary-color) 7.01%, var(--secondary-color) 83.94%);
+
+    /* 상호작용 색상 */
+    --success-color: #2bff00;
+    --success-light-color: #f0faee;
+    --warning-color: #ffc84b;
+    --warning-light-color: #fff7e4;
+    --error-color: #d7260d;
+    --error-light-color: #ffe9e9;
+
+    /* SNS 색상 */
+    --naver-green: #2fbd35;
+    --naver-black: #121212;
+    --kakao-yellow: #ffe000;
+    --kakao-brown: #391b1b;
+
+    /* 라이브러리 색상 */
+    --swiper-theme-color : var(--neon-teal);
+}
+
+/* layout */
+body {background-color: var(--bg-color);}
+.flex {display: flex; align-items: center; justify-content: center;}
+.grid {display: grid; grid-template-rows: auto; place-items: center;}
+::selection {background-color: var(--neon-violet); color: #fff;}
+
+/* view */
+.hide {display: none !important;}
+.hidden {visibility: hidden !important;}
+.op0 {opacity: 0 !important;}
+
+/* button */
+.btn {width: 100%; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer;}
+.btn-type-rec {border-radius: 5px;}
+.btn-type-round {border-radius: 20vw;}
+.btn:hover {filter: brightness(0.9);}
+
+
+/* 파생 클래스 */
+.bg-main {background-color: var(--primary-color);}
+.bg-sub {background-color: var(--sub-color);}
+
+/* text */
+html, body {color: var(--text-base);}
+.text-main {color: var(--primary-color);}
+.text-sub {color: var(--sub-color);}
+.text-w {color: #fff;}
+.text-gradient {
+    width: max-content !important;
+    background: var(--gradient-base);
+    color: transparent !important;
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    font-weight: 900;
+}
+
+.t-ellipsis {overflow: hidden; display: inline-block; text-overflow: ellipsis; white-space: nowrap;}
+.t-ellipsis-line2 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.t-ellipsis-line3 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+.t-ellipsis-line4 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;}
+.t-ellipsis-line5 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;}

@@ -1,0 +1,178 @@
+/* frame */
+main {flex-direction: column;}
+
+/* global */
+section {padding: 150px 0;}
+.title_global {margin-bottom: 20px; display: flex; font-size: 60px; font-weight: 900;}
+.title_global .point_magenta {color: var(--neon-magenta);}
+.title_global .point_violet {color: var(--neon-violet);}
+.title_global .point_teal {color: var(--neon-teal);}
+
+@media screen and (max-width: 1200px) {
+  section {padding: 120px 0;}
+}
+
+@media screen and (max-width: 1024px) {
+  html, body {font-size: 14px;}
+  section {padding: 100px 0;}
+  .title_global {font-size: 48px;}
+}
+
+@media screen and (max-width: 640px) {
+  section {padding: 80px 0;}
+}
+
+@media screen and (max-width: 475px) {
+  html, body {font-size: 13px;}
+  section {padding: 60px 0;}
+  .cont br {display: none;}
+  .title_global {font-size: 32px;}
+}
+
+@media screen and (max-width: 320px) {
+  .title_global {font-size: 28px;}
+}
+
+/* home */
+.main_visual {height: 100vh; height: 100svh;}
+.main_visual .inner_wrap {height: 100%; flex-direction: column; align-items: flex-start;}
+.main_visual .title {margin-bottom: 0.5em; font-size: 120px; font-weight: 900; line-height: 1;}
+.main_visual .title span {position: relative;}
+.main_visual .title span::before {content: ""; width: 100%; height: 100%; display: block; position: absolute; top: 0; right: 0; transition: width 0.8s; background-color: var(--bg-color); will-change: width;}
+.main_visual .title .point_teal {color: var(--neon-teal);}
+.main_visual .title .point_magenta {color: var(--neon-magenta);}
+.main_visual .sub {margin-bottom: 0.3em; font-size: 34px;}
+.main_visual .cont {font-size: 18px;}
+/* home animation */
+.main_visual .title span.active::before {width: 0;}
+.main_visual .title span:nth-of-type(2):before {transition-delay: .6s;}
+.main_visual .title span:nth-of-type(3):before {transition-delay: .8s;}
+
+@media screen and (max-width: 1024px) {
+  .main_visual .title {font-size: 100px;}
+  .main_visual .sub {font-size: 28px;}
+  .main_visual .cont {font-size: 16px;}
+}
+
+@media screen and (max-width: 640px) {
+  .main_visual .title {font-size: 70px;}
+  .main_visual .sub {font-size: 22px;}
+  .main_visual .cont {font-size: 1rem;}
+}
+
+@media screen and (max-width: 475px) {
+  .main_visual .title {font-size: 60px;}
+  .main_visual .sub {font-size: 18px;}
+}
+
+@media screen and (max-width: 376px) {
+  .main_visual .title {font-size: 45px;}
+  .main_visual .sub {font-size: 16px;}
+}
+
+/* profile */
+.main_about {background-color: #fff; background-image: url(../image/bg/brush10.png); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; color: var(--bg-color);}
+.main_about .profile_box {margin-top: 50px; align-items: flex-start;}
+.main_about .profile_box .photo {min-width: 520px; width: 520px; margin-right: 30px;}
+.main_about .profile_box .photo .circle {width: 100%; aspect-ratio: 16 / 9; position: relative; font-size: 0;}
+.main_about .profile_box .photo .circle .card {width: 90%; position: absolute; top: 0; left: 0; transition: transform .7s; backface-visibility: hidden; font-size: 0; z-index: 1;}
+.main_about .profile_box .photo .circle .card img {width: 100%; position: absolute; top: 0; left: 0; object-fit: contain; object-position: center;}
+.main_about .profile_box .photo .circle .card img.front {z-index: 2; box-shadow: 0 0 5px 2px var(--dark-gray20);}
+.main_about .profile_box .photo .circle .card img.back {transform: rotate3d(0, 1, 0, 180deg); box-shadow: 0 0 5px 2px var(--dark-gray20);}
+.main_about .profile_box .photo .circle::after {content: ""; width: 90%; aspect-ratio: 16 / 9; display: block; position: absolute; bottom: 0; right: 20px; opacity: 0.15; background-color: var(--dark-gray40);}
+.main_about .profile_box .photo .circle:hover .card {transform: rotate3d(0, 1, 0, 180deg);}
+.main_about .info {grid-template-columns: repeat(2, 1fr); gap: 40px 0; align-items: flex-start; font-size: 16px;}
+.main_about .info .info_box {width: 100%;}
+.main_about .info p {margin-bottom: 5px; padding-left: 15px;}
+.main_about .info .title {margin-bottom: 10px; padding-left: 0; font-weight: 900; color: var(--neon-teal); font-size: 22px;}
+.main_about .link {margin-top: 10px; display: flex; gap: 30px;}
+.main_about .link a {font-size: 14px; font-weight: 600;}
+.main_about .link a:hover {filter: brightness(0.8);}
+.main_about .link a:visited {color: var(--neon-violet); border: 2px solid var(--neon-violet);}
+.main_about .link a::before {content: "▶ ";}
+.main_about .link .carrer {color: var(--neon-magenta);}
+.main_about .link .intro_me {color: var(--neon-magenta);}
+
+@media screen and (min-width: 1024px) {
+  .main_about .info .info_box:hover .title {color: var(--neon-magenta);}
+}
+
+@media screen and (max-width: 1200px) {
+  .main_about .profile_box {flex-direction: column;}
+  .main_about .profile_box .photo {margin-bottom: 40px; margin-right: 0;}
+  .main_about .info {max-width: 860px;}
+}
+
+@media screen and (max-width: 1024px) {
+  .main_about .profile_box {margin-top: 30px;}
+  .main_about .info {font-size: 1rem;}
+  .main_about .info .title {font-size: 18px;}
+}
+
+@media screen and (max-width: 768px) {
+  .main_about .profile_box .photo {min-width: auto; width: 100%;}
+}
+
+@media screen and (max-width: 475px) {
+  .main_about .profile_box .photo {margin-bottom: 20px;}
+  .main_about .info {grid-template-columns: repeat(2, 1fr);}
+  .main_about .info .title {font-size: 14px;}
+}
+
+@media screen and (max-width: 375px) {
+  .main_about .link {flex-direction: column; gap: 0;}
+  .main_about .link a {font-size: 1rem;}
+}
+
+@media screen and (max-width: 320px) {
+  .main_about .info {grid-template-columns: 1fr; gap: 20px;}
+}
+
+/* project */
+.main_project {display: flex; align-items: center; background-color: var(--dark-gray70);}
+.main_project .project_block {margin-top: 60px;}
+.main_project .project_block ul {grid-template-columns: repeat(5, 1fr); align-items: stretch; gap: 30px; text-align: center;}
+.main_project .project_block ul li {width: 100%;}
+.main_project .project_block ul li a {height: 100%; display: flex; flex-direction: column; justify-content: start; align-items: center;}
+.main_project .project_block ul li a .img_box {width: 100%; aspect-ratio: 1 / 1; margin-bottom: 10px; display: block; position: relative; transition: transform .4s; font-size: 0; overflow: hidden; box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1); border-radius: 5px;}
+.main_project .project_block ul li a .img_box::after {content: ""; width: 100%; height: 100%; display: block; position: absolute; top: 0; left: 0; transition: opacity .4s; opacity: 0; z-index: 1; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px);}
+.main_project .project_block ul li a .img_box img {width: 100%; height: 100%; transition: all .5s; object-fit: cover; object-position: center;}
+.main_project .project_block ul li a .img_box .stick {width: 0; height: 8px; position: absolute; transition: all .5s; background-color: transparent; z-index: 2;}
+.main_project .project_block ul li a .img_box .stick1 {top: 10px; left: 50%; transform: translateX(-50%) rotate(-35deg);}
+.main_project .project_block ul li a .img_box .stick2 {width: 6px; height: 0; top: 50%; left: 10px; transform: translateY(-50%) rotate(35deg);}
+.main_project .project_block ul li a .img_box .stick3 {bottom: 10px; left: 50%; transform: translateX(-50%) rotate(35deg);}
+.main_project .project_block ul li a .img_box .stick4 {width: 4px; height: 0; top: 50%; right: 10px; transform: translateY(-50%) rotate(-35deg);}
+.main_project .project_block ul li a .img_box .stick5 {width: 0; height: 10px; top: calc(50% + 16px); left: 50%; transform: translateX(-50%);}
+.main_project .project_block ul li a .img_box .stick5::before {content: "보러가기"; position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); transition: all .4s; opacity: 0; font-size: 18px; color: #fff;}
+.main_project .project_title {font-weight: 600;}
+
+@media screen and (min-width: 1024px) {
+  .main_project .project_block ul li a:hover .project_title {color: var(--neon-teal);}
+  .main_project .project_block ul li a:hover .img_box {transform: translateY(-10px);}
+  .main_project .project_block ul li a:hover .img_box::after {opacity: 1;}
+
+  .main_project .project_block ul li a:hover .img_box .stick {background-color: rgba(255,255,255,0.8);}
+  .main_project .project_block ul li a:hover .img_box .stick1 {width: 110%; top: 10px; left: 50%; transform: translateX(-50%) rotate(15deg); background-color: var(--neon-magenta);}
+  .main_project .project_block ul li a:hover .img_box .stick2 {height: 110%; top: 50%; left: 10px; transform: translateY(-50%) rotate(15deg); background-color: var(--neon-teal);}
+  .main_project .project_block ul li a:hover .img_box .stick3 {width: 110%; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(15deg); background-color: var(--neon-orange);}
+  .main_project .project_block ul li a:hover .img_box .stick4 {height: 110%; top: 50%; right: 10px; transform: translateY(-50%) rotate(15deg); background-color: var(--neon-violet);}
+  .main_project .project_block ul li a:hover .img_box .stick5 {width: 120%;}
+  .main_project .project_block ul li a:hover .img_box .stick5::before {bottom: 16px; opacity: 1;}
+}
+
+@media screen and (max-width: 1024px) {
+  .main_project .project_block ul {grid-template-columns: repeat(4, 1fr);}
+}
+
+@media screen and (max-width: 768px) {
+  .main_project .project_block ul {grid-template-columns: repeat(3, 1fr);}
+}
+
+@media screen and (max-width: 640px) {
+  .main_project .project_block ul {grid-template-columns: repeat(2, 1fr);}
+}
+
+@media screen and (max-width: 475px) {
+  .main_project .project_block {margin-top: 30px;}
+  .main_project .project_block ul {gap: 40px 15px;}
+}
