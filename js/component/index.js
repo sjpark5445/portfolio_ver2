@@ -55,32 +55,6 @@ const project = [
   },
   {
     text: [
-      '그로서리펍 스낵얌',
-      '약 1개월',
-      'AOS.js / swiper.js / 네이버 지도 API v3',
-      'https://snackyam.kr',
-      '그로서리펍 스낵얌의 로고에 어울리는 통통튀는 분위기를 표현',
-      '대조되는 색상을 이용해 펍, 푸드영역을 구분하고자 함',
-      '자바스크립트 위치 계산, 메타태그를 사용한 SEO작업, youtube iframe api 사용에 대한 이해력을 높일 수 있는 프로젝트였습니다.',
-      '잦은 기획 변경과 일정 압박으로 인해 유지보수 최적화 관점에서 아쉬움이 남습니다.',
-    ],
-    images: [
-      './image/content/snackyam_cont1.png',
-      './image/content/snackyam_cont2.png',
-      './image/content/snackyam_cont3.png',
-      './image/content/snackyam_cont4.png',
-      './image/content/snackyam_cont5.png',
-    ],
-    contribute: [
-      100,
-      100,
-      80,
-      10,
-    ],
-    color : ['#cc2127', '#7433cb', '#FFCA48'],
-  },
-  {
-    text: [
       '버추얼 유튜버 플랫폼 VLYFT',
       '약 1개월',
       'swiper.js / FullCalendar / Quill',
@@ -130,6 +104,32 @@ const project = [
       0,
     ],
     color : ['#6d4aa3', '#00c7c8', '#010221'],
+  },
+  {
+    text: [
+      '그로서리펍 스낵얌',
+      '약 1개월',
+      'AOS.js / swiper.js / 네이버 지도 API v3',
+      'https://snackyam.kr',
+      '그로서리펍 스낵얌의 로고에 어울리는 통통튀는 분위기를 표현',
+      '대조되는 색상을 이용해 펍, 푸드영역을 구분하고자 함',
+      '자바스크립트 위치 계산, 메타태그를 사용한 SEO작업, youtube iframe api 사용에 대한 이해력을 높일 수 있는 프로젝트였습니다.',
+      '잦은 기획 변경과 일정 압박으로 인해 유지보수 최적화 관점에서 아쉬움이 남습니다.',
+    ],
+    images: [
+      './image/content/snackyam_cont1.png',
+      './image/content/snackyam_cont2.png',
+      './image/content/snackyam_cont3.png',
+      './image/content/snackyam_cont4.png',
+      './image/content/snackyam_cont5.png',
+    ],
+    contribute: [
+      100,
+      100,
+      80,
+      10,
+    ],
+    color : ['#cc2127', '#7433cb', '#FFCA48'],
   },
 ];
 
