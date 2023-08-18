@@ -93,9 +93,10 @@ section {padding: 150px 0;}
 .main_about .link .carrer {color: var(--neon-magenta);}
 .main_about .link .intro_me {color: var(--neon-magenta);}
 
+.safari-browser .main_about .profile_box .photo .circle:hover .card {transform: translateZ(0);}
+
 @media screen and (min-width: 1024px) {
   .main_about .info .info_box:hover .title {color: var(--neon-magenta);}
-  .safari-browser .main_about .profile_box .photo .circle:hover .card {transform: translateZ(0);}
 }
 
 @media screen and (max-width: 1200px) {
