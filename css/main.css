@@ -78,9 +78,9 @@ section {padding: 150px 0;}
 .main_about .profile_box .photo .circle .card {width: 90%; position: absolute; top: 0; left: 0; transition: transform .7s; backface-visibility: hidden; font-size: 0; z-index: 1;}
 .main_about .profile_box .photo .circle .card img {width: 100%; position: absolute; top: 0; left: 0; object-fit: contain; object-position: center;}
 .main_about .profile_box .photo .circle .card img.front {z-index: 2; box-shadow: 0 0 5px 2px var(--dark-gray20);}
-.main_about .profile_box .photo .circle .card img.back {transform: translateZ(0) rotate3d(0, 1, 0, 180deg); box-shadow: 0 0 5px 2px var(--dark-gray20);}
+.main_about .profile_box .photo .circle .card img.back {transform: rotate3d(0, 1, 0, 180deg); box-shadow: 0 0 5px 2px var(--dark-gray20);}
 .main_about .profile_box .photo .circle::after {content: ""; width: 90%; aspect-ratio: 16 / 9; display: block; position: absolute; bottom: 0; right: 20px; opacity: 0.15; background-color: var(--dark-gray40);}
-.main_about .profile_box .photo .circle:hover .card {transform: translateZ(0) rotate3d(0, 1, 0, 180deg);}
+.main_about .profile_box .photo .circle:hover .card {transform: rotate3d(0, 1, 0, 180deg);}
 .main_about .info {grid-template-columns: repeat(2, 1fr); gap: 40px 0; align-items: flex-start; font-size: 16px;}
 .main_about .info .info_box {width: 100%;}
 .main_about .info p {margin-bottom: 5px; padding-left: 15px;}
@@ -95,6 +95,7 @@ section {padding: 150px 0;}
 
 @media screen and (min-width: 1024px) {
   .main_about .info .info_box:hover .title {color: var(--neon-magenta);}
+  .safari-browser .main_about .profile_box .photo .circle .card img.back {transform: rotate3d(0, 1, 0, 180deg); box-shadow: 0 0 5px 2px var(--dark-gray20);}
 }
 
 @media screen and (max-width: 1200px) {
