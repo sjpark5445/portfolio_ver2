@@ -129,8 +129,9 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 
 /* pops */
 .project_pop {width: 100%; height: 100%; padding-bottom: calc(var(--header-height) * 2); position: fixed; top: 0; left: 0; transform: translateY(1%); transition: transform .3s, opacity .7s; opacity: 0; background-color: var(--bg-color); background-image: url(../../image/bg/brush10.png); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; overflow-y: auto; overflow-x: hidden; z-index: -1;}
-.project_pop .pop_header {height: calc(var(--header-height) * 2); display: flex; justify-content: end; align-items: center; position: sticky; top: 0; z-index: 10;}
-.project_pop .pop_header .pop_close {width: 40px; height: 40px; position: relative; background-color: transparent;}
+.project_pop .inner_wrap {align-items: flex-start;}
+.project_pop .pop_header {height: calc(var(--header-height) * 2); display: flex; justify-content: end; align-items: center; position: sticky; top: 0; z-index: 10; pointer-events: none;}
+.project_pop .pop_header .pop_close {width: 40px; height: 40px; position: relative; background-color: transparent; pointer-events: all;}
 .project_pop .pop_header .pop_close span {width: 100%; height: 4px; display: block; position: absolute; top: 50%; left: 50%; background-color: #fff; border-radius: 10px;}
 .project_pop .pop_header .pop_close span:first-of-type {transform: translate(-50%, -50%) rotate(45deg);}
 .project_pop .pop_header .pop_close span:last-of-type {transform: translate(-50%, -50%) rotate(-45deg);}
@@ -138,10 +139,15 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 .project_pop .mockup_block .frame {width: 100%; position: relative; pointer-events: none; z-index: 2;}
 .project_pop .mockup_block .mySwiper {width: 89%; height: 95%; position: absolute; top: 49.5%; left: 51%; transform: translate(-50%, -50%); border-radius: 15px; overflow: hidden;}
 .project_pop .mockup_block .mySwiper .swiper-slide img {width: 100%; height: 100%; object-fit: cover; object-position: center;}
-.project_pop .text_block {padding-left: 40px;}
+.project_pop .tab_wrap {padding-left: 40px;}
+.project_pop .tab_wrap .tab_header {margin-bottom: 30px; justify-content: start;}
+.project_pop .tab_wrap .tab_header .tab {min-width: 110px; padding: 8px 20px; border-radius: 10px 10px 0 0; cursor: pointer; background-color: var(--dark-gray70); text-align: center;}
+.project_pop .tab_wrap .tab_header .tab.active {background-color: var(--neon-magenta); color: #fff;}
+.project_pop .tab_wrap .tab_header .tab:hover {filter: brightness(0.9);}
 .project_pop .text_block .title {margin-bottom: 10px; justify-content: start; font-size: 28px; font-weight: 900; letter-spacing: 1px;}
 .project_pop .text_block .title .point {color: var(--neon-teal);}
 .project_pop .text_block .name {margin-bottom: 45px; display: block;}
+.project_pop .text_block .name [data-project-cont] {display: block;}
 .project_pop .text_block a.name {width: max-content; color: var(--neon-magenta); text-decoration: underline;}
 .project_pop .text_block .per_box {display: flex; flex-direction: column; align-items: start; gap: 5px; font-size: 12px;}
 .project_pop .text_block .per_box .graph {display: flex; align-items: center;}
@@ -149,6 +155,7 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 .project_pop .text_block .per_box .graph .inner .gage {width: 0; height: 100%; display: block; position: absolute; top: 0; left: 0; transition: width 1s; background-color: var(--neon-teal);}
 .project_pop .text_block .per_box .graph::before {content: attr(data-graph-name); min-width: 40px;}
 .project_pop .text_block .per_box .graph::after {content: attr(data-percent); margin-left: 5px;}
+.project_pop .text_block .color_dot {width: 1em; height: 1em; margin-left: 5px; display: block; background-color: #fff; border-radius: 5px;}
 
 .project_pop.active {transform: translateZ(0); opacity: 1; pointer-events: all; z-index: 300;}
 
@@ -158,10 +165,13 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 
 @media screen and (max-width: 768px) {
 	.project_pop {padding-bottom: var(--header-height);}
+	.project_pop .tab_wrap {padding-left: 0;}
+	.project_pop .tab_wrap .tab_header {margin-top: 30px; margin-bottom: 0;}
+	.project_pop .tab_wrap .tab_header .tab {width: 50%; min-width: auto;}
 	.project_pop .pop_header {height: var(--header-height); padding-left: 0; justify-content: center; box-sizing: content-box;}
 	.project_pop .pop_header .pop_close {background-color: var(--bg-color); border-radius: 5px;}
 	.project_pop .text_block {margin-top: 50px; padding-left: 0;}
-  .project_pop .inner_wrap {flex-direction: column;}
+  .project_pop .inner_wrap {flex-direction: column; align-items: center;}
 }
 
 @media screen and (max-width: 475px) {
@@ -187,6 +197,7 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 .email_pop .btn_wrap .close {background-color: var(--dark-gray40); color: #fff; box-shadow: inset -1px -1px 8px 2px rgba(0, 0, 0, 0.3);}
 
 .email_pop .inner_wrap.active {transform: translateZ(0); transition: transform .7s, opacity .7s; opacity: 1;}
+.email_pop::-webkit-scrollbar {display: none;}
 
 @media screen and (max-width: 475px) {
 	.email_pop {align-items: flex-start;}

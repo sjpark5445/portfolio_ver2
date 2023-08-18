@@ -55,3 +55,21 @@ const viewPortfolioTitle = () => {
     }, 2000);
   }, 3500);
 }
+
+function tabChange(obj = 0) {
+  const $tabHeaderAll = document.querySelectorAll(`.tab_header [data-tab-num]`);
+  const $tabBodyAll = document.querySelectorAll(`.tab_body[data-tab-num]`);
+  let tabNum;
+
+  obj ? tabNum = obj.dataset.tabNum : tabNum = 0;
+
+  Array.from($tabBodyAll).forEach((item, idx) => {
+    if(item.dataset.tabNum == tabNum) {
+      item.style.display = 'block'; // 활성화된 탭 보여주기
+      $tabHeaderAll[idx].classList.add('active'); // 활성화된 탭 색상 변경
+    } else {
+      item.style.display = 'none'; // 활성화된 탭이 아니면 가려주기
+      $tabHeaderAll[idx].classList.remove('active'); // 활성화된 탭이 아니면 색상 제거
+    }
+  });
+}

@@ -114,7 +114,6 @@ body {background-color: var(--bg-color);}
 .btn-type-round {border-radius: 20vw;}
 .btn:hover {filter: brightness(0.9);}
 
-
 /* 파생 클래스 */
 .bg-main {background-color: var(--primary-color);}
 .bg-sub {background-color: var(--sub-color);}

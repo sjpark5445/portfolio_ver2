@@ -89,13 +89,11 @@ class ProjectPop extends HTMLElement {
       </div>
 
       <div class="inner_wrap flex">
-        <!-- mockup -->
         <div class="mockup_block flex">
           <div class="frame">
             <img src="./image/content/iphone.png" alt="휴대폰 목업">
           </div>
 
-          <!-- swiper -->
           <div class="swiper mySwiper" id="mockupSlider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -118,68 +116,104 @@ class ProjectPop extends HTMLElement {
           </div>
         </div>
 
-        <!-- text -->
-        <div class="text_block">
-          <p class="title flex">
-            <span class="point">프</span>
-            <span>로젝트명</span>
-          </p>
+        <div class="tab_wrap">
+          <ul class="tab_header flex">
+            <li class="tab active" data-tab-num="0" onclick="tabChange(this);">Overview</li>
+            <li class="tab" data-tab-num="1" onclick="tabChange(this);">Detail</li>
+          </ul>
 
-          <p class="name" data-project-cont="projectName"></p>
+          <div class="text_block tab_body" data-tab-num="0">
+            <p class="title flex">
+              <span class="point">프</span>
+              <span>로젝트명</span>
+            </p>
 
-          <p class="title flex">
-            <span class="point">제</span>
-            <span>작기간</span>
-          </p>
+            <p class="name" data-project-cont="projectName"></p>
 
-          <p class="name" data-project-cont="during"></p>
+            <p class="title flex">
+              <span class="point">제</span>
+              <span>작기간</span>
+            </p>
 
-          <p class="title flex">
-            <span class="point">사</span>
-            <span>용 라이브러리</span>
-          </p>
+            <p class="name" data-project-cont="during"></p>
 
-          <p class="name" data-project-cont="lib"></p>
+            <p class="title flex">
+              <span class="point">사</span>
+              <span>용 라이브러리</span>
+            </p>
 
-          <p class="title flex">
-            <span class="point">바</span>
-            <span>로가기 링크</span>
-          </p>
+            <p class="name" data-project-cont="lib"></p>
 
-          <a class="name" href="javascript:void(0);" title="작업물 링크" target="_blank" data-project-cont="link"></a>
+            <p class="title flex">
+              <span class="point">바</span>
+              <span>로가기 링크</span>
+            </p>
 
-          <p class="title flex">
-            <span class="point">기</span>
-            <span>여도</span>
-          </p>
+            <a class="name" href="javascript:void(0);" title="작업물 링크" target="_blank" data-project-cont="link"></a>
 
-          <div class="name per_box flex">
-            <span class="graph" data-graph-name="HTML5">
-              <span class="inner">
-                <span class="gage"></span>
+            <p class="title flex">
+              <span class="point">기</span>
+              <span>여도</span>
+            </p>
+
+            <div class="name per_box flex">
+              <span class="graph" data-graph-name="HTML5">
+                <span class="inner">
+                  <span class="gage"></span>
+                </span>
               </span>
-            </span>
 
-            <span class="graph" data-graph-name="CSS3">
-              <span class="inner">
-                <span class="gage"></span>
+              <span class="graph" data-graph-name="CSS3">
+                <span class="inner">
+                  <span class="gage"></span>
+                </span>
               </span>
-            </span>
 
-            <span class="graph" data-graph-name="JS">
-              <span class="inner">
-                <span class="gage"></span>
+              <span class="graph" data-graph-name="JS">
+                <span class="inner">
+                  <span class="gage"></span>
+                </span>
               </span>
-            </span>
 
-            <span class="graph" data-graph-name="Design">
-              <span class="inner">
-                <span class="gage"></span>
+              <span class="graph" data-graph-name="Design">
+                <span class="inner">
+                  <span class="gage"></span>
+                </span>
               </span>
-            </span>
+            </div>
+
+            <p>* 기여도는 Thymeleaf, 라이브러리에 사용된 코드를 제외한 수치입니다.</p>
           </div>
 
-          <p>* 기여도는 Thymeleaf, 라이브러리에 사용된 코드를 제외한 수치입니다.</p>
+          <div class="text_block tab_body" data-tab-num="1" style="display: none;">
+            <p class="title flex">
+              <span class="point">디</span>
+              <span>자인컨셉</span>
+            </p>
+
+            <p class="name" data-project-cont="projectConcept"></p>
+
+            <p class="title flex">
+              <span class="point">컬</span>
+              <span>러</span>
+              <span class="color_dot"></span>
+              <span class="color_dot"></span>
+              <span class="color_dot"></span>
+            </p>
+
+            <p class="name" data-project-cont="projectColor"></p>
+
+            <p class="title flex">
+              <span class="point">작</span>
+              <span>업 후기</span>
+            </p>
+
+            <p class="name">
+              <span data-project-cont="projectGood"></span>
+              <span data-project-cont="projectBad"></span>
+            </p>
+
+          </div>
         </div>
       </div>
     </aside>`;
