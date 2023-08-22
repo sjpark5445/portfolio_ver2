@@ -146,9 +146,13 @@ window.addEventListener('DOMContentLoaded', () => {
 const openProjectPopup = e => {
   const $projectPop = document.querySelector('.project_pop');
   const idx = [...document.querySelectorAll('.project_list li')].indexOf(e.currentTarget.parentNode);
+  const $loadingPop = document.querySelector('.loading_pop');
 
+  $loadingPop.classList.add('active'); // 모바일인 경우 로딩 이미지 열기
+  
   const openFn = () => {
     $projectPop.classList.add('active');
+    $loadingPop.classList.remove('active'); // 로딩 이미지 닫기
     lockBodyScroll(); // body 스크롤 잠금
   }
 

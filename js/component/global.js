@@ -260,9 +260,21 @@ class EmailPopup extends HTMLElement {
   }
 }
 
+class LoadingPopup extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = 
+    `
+      <div class="loading_pop flex">
+        <img src="./image/icon/spinner.png">
+      </div>
+    `
+  }
+}
+
 // custom element
 customElements.define("header-bar", Header);
 customElements.define("mo-nav", MoNav);
 customElements.define("footer-bar", Footer);
 customElements.define("project-popup", ProjectPop);
 customElements.define("email-popup", EmailPopup);
+customElements.define("loading-popup", LoadingPopup);

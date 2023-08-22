@@ -149,19 +149,21 @@ function sendEmail(obj) {
   // form data 검증
   const confirm = confirmEmailForm();
 
-  if(confirm?.break) {
+  if(confirm?.callback) {
     // 필수값이 모두 들어있지 않은 경우
     confirm.callback();
     return false;
   } else {
     // 검증 완료된 폼을 전송
-
+    const $loadingPop = document.querySelector('.loading_pop');
     // email js key값
     const SERVICE_ID = 'service_y1f5vfg';
     const TEMPLATE_ID = 'template_feu0pkq';
-    // 중복 전송 방지
+
+    // 중복 전송 방지 & 로딩중 팝업 띄우기
     obj.classList.add('loading');
     obj.innerText = '전송중';
+    $loadingPop.classList.add('active');
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, confirm.formData, EMAIL_KEY)
     .then(res => {
@@ -177,6 +179,7 @@ function sendEmail(obj) {
         // 버튼 초기화
         obj.classList.remove('loading');
         obj.innerText = '발송';
+        $loadingPop.classList.remove('active');
       },
       error => {
         sweetAlert('error', '메일 발송에 실패했습니다.');
@@ -185,6 +188,7 @@ function sendEmail(obj) {
         // 버튼 초기화
         obj.classList.remove('loading');
         obj.innerText = '발송';
+        $loadingPop.classList.remove('active');
       });
     }
 }
@@ -196,8 +200,6 @@ function confirmEmailForm() {
 
   for(let i = 0; i < confirmMap.length; i++) {
     if(confirmMap[i].logic) {
-      // 검증을 통과하지 못한 경우 break여부를 result에 담아주기
-      result.break = true;
       // 검증을 통과하지 못한 경우 사용할 함수를 result에 담아주기
       result.callback = () => { 
 
