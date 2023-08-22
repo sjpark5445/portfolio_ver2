@@ -150,14 +150,14 @@ const openProjectPopup = e => {
   const isLoaded = e.currentTarget.dataset.loaded;
   
   // 이미 로드된 적 없는 프로젝트인 경우 로딩 이미지 띄워주기
-  if(!isLoaded) {
+  if(!isLoaded && isMobile) {
     $loadingPop.classList.add('active');
     e.currentTarget.dataset.loaded = 'loaded';
   }
   
   const openFn = () => {
     $projectPop.classList.add('active');
-    $loadingPop.classList.remove('active'); // 로딩 이미지 닫기
+    isMobile && $loadingPop.classList.remove('active'); // 로딩 이미지 닫기
     lockBodyScroll(); // body 스크롤 잠금
   }
 
