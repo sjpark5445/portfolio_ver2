@@ -145,10 +145,12 @@ window.addEventListener('DOMContentLoaded', () => {
 // 프로젝트 팝업 열기 :: main
 const openProjectPopup = e => {
   const $projectPop = document.querySelector('.project_pop');
-  const idx = [...document.querySelectorAll('.project_list li')].indexOf(e.currentTarget.parentNode);
   const $loadingPop = document.querySelector('.loading_pop');
+  const idx = [...document.querySelectorAll('.project_list li')].indexOf(e.currentTarget.parentNode);
+  const isLoaded = e.currentTarget.dataset.loaded;
 
-  $loadingPop.classList.add('active'); // 모바일인 경우 로딩 이미지 열기
+  // 이미 로드된 적 없는 프로젝트인 경우 로딩 이미지 띄워주기
+  !isLoaded ? $loadingPop.classList.add('active') : e.currentTarget.dataset.loaded = 'loaded';
   
   const openFn = () => {
     $projectPop.classList.add('active');
