@@ -155,19 +155,20 @@ const openProjectPopup = e => {
     e.currentTarget.dataset.loaded = 'loaded';
   }
   
+  // 팝업 이미지 로딩 완료시 실행할 함수
   const openFn = () => {
     $projectPop.classList.add('active');
     isMobile && $loadingPop.classList.remove('active'); // 로딩 이미지 닫기
     lockBodyScroll(); // body 스크롤 잠금
   }
 
+  $projectPop.scrollTo({top: 0}); // 스크롤 초기화
+  tabChange(); // 활성화 탭 초기화
   changePopText(idx); // 팝업 내부 텍스트 변경
   changePopImage(idx, openFn); // 팝업 이미지 교체
-  tabChange(); // 활성화 탭 초기화
-  $projectPop.scrollTo({top: 0}); // 스크롤 초기화
 }
 
-// 프로젝트 팝업 열기 :: sub func :: start
+// 프로젝트 팝업 열기 :: sub routine :: start
 
 // 팝업 내부 텍스트 변경
 function changePopText(idx) {
@@ -192,22 +193,17 @@ function changePopText(idx) {
 
 // 팝업 이미지 교체
 function changePopImage(idx, callback) {
-  let $projectImageBox = document.querySelectorAll('[data-swiper-slide-index]');
-  let imgCount = $projectImageBox.length - 1;
+  const $projectImageBox = document.querySelectorAll('[data-swiper-slide-index]');
+  const imgCount = $projectImageBox.length - 1;
   let loadCount = 0;
 
   Array.from($projectImageBox).forEach(item => {
     const $img = item.querySelector('img');
     const boxIdx = item.getAttribute('data-swiper-slide-index');
 
+    // 교체된 이미지가 모두 로드된 후 실행될 함수
     const imgLoadFunc = () => {
-      if(imgCount == loadCount) {
-        // 교체된 이미지가 모두 로드된 후 실행될 함수
-        callback();
-      } else {
-        loadCount++;
-      }
-
+      imgCount == loadCount ? callback() : loadCount++;
       $img.removeEventListener('load', imgLoadFunc);
     }
 
@@ -215,4 +211,4 @@ function changePopImage(idx, callback) {
     $img.addEventListener('load', imgLoadFunc);
   });
 }
-// 프로젝트 팝업 열기 :: sub func :: end
+// 프로젝트 팝업 열기 :: sub routine :: end
