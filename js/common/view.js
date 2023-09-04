@@ -10,26 +10,11 @@ const isNaver = /NAVER/i.test(window.navigator.userAgent);
 const EMAIL_KEY = "A2cE-NCa-WUFwLURD";
 
 const moBrowserMap = [
-  {
-    logic: isAndroid,
-    className: 'android-browser'
-  },
-  {
-    logic: isApple,
-    className: 'safari-browser'
-  },
-  {
-    logic: isKakao,
-    className: 'kakao-browser'
-  },
-  {
-    logic: isSamsung,
-    className: 'samsung-browser'
-  },
-  {
-    logic: isNaver,
-    className: 'naver-browser'
-  },
+  { logic: isAndroid, className: 'android-browser' },
+  { logic: isApple, className: 'safari-browser' },
+  { logic: isKakao, className: 'kakao-browser' },
+  { logic: isSamsung, className: 'samsung-browser' },
+  { logic: isNaver, className: 'naver-browser' },
 ];
 
 /**
@@ -278,12 +263,12 @@ function getConfirmMap() {
 
 // 함수가 너무 자주 실행되지 않도록 제한(마지막으로 실행된 함수만)
 function debounce(callback, limit = 100) {
-  let timeout
+  let timeout;
   return function(...args) {
-      clearTimeout(timeout)
+      clearTimeout(timeout);
       timeout = setTimeout(() => {
-          callback.apply(this, args)
-      }, limit)
+          callback.apply(this, args);
+      }, limit);
   }
 }
 
@@ -303,15 +288,15 @@ function debounce_leading(callback, limit = 100) {
 
 // 함수가 너무 자주 실행되지 않도록 제한(횟수 조절)
 function throttle(callback, limit = 100) {
-  let waiting = false
+  let waiting = false;
   return function() {
-      if(!waiting) {
-          callback.apply(this, arguments)
-          waiting = true
-          setTimeout(() => {
-              waiting = false
-          }, limit)
-      }
+    if(!waiting) {
+      callback.apply(this, arguments);
+      waiting = true;
+      setTimeout(() => {
+        waiting = false;
+      }, limit);
+    }
   }
 }
 
@@ -324,7 +309,8 @@ function sweetAlert(icon, title, callback) {
 			confirmButton: 'btn btn-type-round alert_btn'
 		},
 		buttonsStyling: false
-	}).then(res => {
+	})
+    .then((res) => {
       callback && callback();
     });
 
@@ -359,4 +345,111 @@ function detectMobileBrowser() {
   moBrowserMap.forEach(item => {
     item.logic && document.body.classList.add(item.className);
   });
+}
+
+// 부모요소 삭제
+function removeParent(el) {
+  const parent = el.parentNode;
+  parent.insertAdjacentElement('beforebegin', el);
+  parent.remove();
+}
+
+/**
+ * 조상요소 삭제
+ * @param {Object} HTML Element
+ * @param {String} classname
+ * @returns break
+ */
+function removeParentAll(el, breakPoint) {
+  const parent = el.parentNode;
+  parent.insertAdjacentElement('beforebegin', el); // 원하는 element 꺼내기
+  parent.remove(); // 부모요소 삭제
+
+  // element를 꺼낸 후에도 부모요소가 있다면
+  if(el.parentNode) {
+    const isBreak = breakPoint && el.parentNode.classList.value.includes(breakPoint);
+    if(isBreak) {
+      // breakPoint가 존재하고, 부모요소가 breakPoint라면 return
+      return true;
+    } else {
+      // 아닌 경우 스스로를 재귀적으로 호출
+      removeParentAll(el, breakPoint);
+    }
+  } 
+}
+
+// object, array자료형 deep copy
+function cloneObject(obj) {
+  const isArr = Array.isArray(obj);
+  let clone;
+  isArr ? clone = [] : clone = {}; // obj type 구분하여 빈 array or object 생성
+
+  for (let key in obj) {
+    if (typeof obj[key] == "object" && obj[key] != null) {
+      // value의 type이 object인 경우 cloneObject함수 재귀적 호출
+      clone[key] = cloneObject(obj[key]);
+    } else {
+      // value의 type이 object가 아닌 경우 그대로 복사
+      clone[key] = obj[key];
+    }
+  }
+
+  return clone;
+}
+
+// 날짜 차이를 구해주는 함수
+function getDateGap(startDate, endDate) {
+  const start = new Date(startDate).getTime();
+  const end = new Date(endDate).getTime();
+  let result = (end - start) / (1000 * 60 * 60 * 24);
+
+  return result;
+}
+
+/**
+ * 디데이를 구해주는 함수
+ * @param {String} 마감일 '2023-01-01'
+ * @param {Int} 기준시간 0 ~ 23
+ * @returns 결과를 담은 object자료
+ */
+function D_DayCount(endDate, openTime = 0) {
+  // 변수 선언
+  let obj = { origin : 0, day : 0, hour : 0, min : 0, sec : 0, ms : 0 }
+  // open시간 설정
+  let open = 60 * 60 * 1000;
+  open = (9 - openTime) * open;
+
+  const start = new Date();
+  const end = new Date(endDate); 
+  const origin = (end.getTime() - start.getTime() - open); // 날짜 차이 계산 (ms)
+  // 날짜 차이가 음수인 경우 에러처리
+  if(origin < 0) {
+    return obj;
+  } else {
+    // endDate까지 남은 시간(ms)를 단위에 맞게 변환하고 나머지 값은 더 작은 단위로 변환
+    // ex) 9.5일 => 9일 12시간
+    const day = origin / (1000 * 60 * 60 * 24);
+    const hour = (day - Math.floor(day)) * 24;
+    const min = (hour - Math.floor(hour)) * 60;
+    const sec = (min - Math.floor(min)) * 60;
+    const ms = (sec - Math.floor(sec)) * 1000;
+
+    // 나머지가 0인 상태에서 계산 시 결과값이 NaN이 되는 현상발생
+    // 결과값이 NaN인 경우 0으로 치환
+    const arr = [day, hour, min, sec, ms].map((item) => {
+      isNaN(item) ? item = 0 : null;
+      return item;
+    });
+
+    // 빈 object에 계산된 결과값 채우기
+    arr.forEach((item, idx) => {
+      // object key값 list
+      const objKey = ['day', 'hour', 'min', 'sec', 'ms'];
+      // value는 소수점 제거 후 채워준다
+      obj[objKey[idx]] = Math.floor(item);
+    });
+
+    obj.origin = origin;
+    return obj;
+  }
 }

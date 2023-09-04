@@ -35,6 +35,8 @@ class Header extends HTMLElement {
 
     // 헤더에 page-num번호가 있는 경우 해당하는 리스트에 'active' 클래스 부여
     pageNum && navList[pageNum].classList.add('active');
+
+    this.classList.add('components');
   }
 }
 
@@ -61,6 +63,8 @@ class MoNav extends HTMLElement {
         </nav>
       </div>
     </aside>`;
+
+    this.classList.add('components');
   }
 }
 
@@ -74,6 +78,8 @@ class Footer extends HTMLElement {
         <a href="javascript: openEmailForm();" class="email_btn btn">이메일 발송</a>
       </div>
     </footer>`;
+
+    this.classList.add('components');
   }
 }
 
@@ -217,6 +223,8 @@ class ProjectPop extends HTMLElement {
         </div>
       </div>
     </aside>`;
+
+    this.classList.add('components');
   }
 }
 
@@ -257,6 +265,8 @@ class EmailPopup extends HTMLElement {
         </div>
       </div>
     </aside>`;
+
+    this.classList.add('components');
   }
 }
 
@@ -268,6 +278,8 @@ class LoadingPopup extends HTMLElement {
         <img src="./image/icon/spinner.png">
       </div>
     `
+
+    this.classList.add('components');
   }
 }
 
@@ -278,3 +290,10 @@ customElements.define("footer-bar", Footer);
 customElements.define("project-popup", ProjectPop);
 customElements.define("email-popup", EmailPopup);
 customElements.define("loading-popup", LoadingPopup);
+
+// window.addEventListener('DOMContentLoaded', () => {
+//   const componentList = document.querySelectorAll('.components');
+//   componentList.forEach((wrap) => {
+//     removeParent(wrap.childNodes[0]);
+//   });
+// });
