@@ -10,23 +10,29 @@ const isNaver = /NAVER/i.test(window.navigator.userAgent);
 const EMAIL_KEY = "A2cE-NCa-WUFwLURD";
 
 const moBrowserMap = [
-  { logic: isAndroid, className: 'android-browser' },
-  { logic: isApple, className: 'safari-browser' },
-  { logic: isKakao, className: 'kakao-browser' },
-  { logic: isSamsung, className: 'samsung-browser' },
-  { logic: isNaver, className: 'naver-browser' },
+  { logic: isAndroid, className: "android-browser" },
+  { logic: isApple, className: "safari-browser" },
+  { logic: isKakao, className: "kakao-browser" },
+  { logic: isSamsung, className: "samsung-browser" },
+  { logic: isNaver, className: "naver-browser" },
 ];
 
 /**
  * 실행
  */
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
+  if (!isMobile) {
+    const mousePointer = new LerpMousePointer();
+    mousePointer.setCircle();
+    mousePointer.render();
+  }
+
   doNotCall();
   detectMobileBrowser();
   emailjs.init(EMAIL_KEY);
 
   // event
-  document.body.addEventListener('click', clickAnimation);
+  document.body.addEventListener("click", clickAnimation);
 });
 
 /**
@@ -35,9 +41,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // 모바일 환경이 아닌 경우 전화하기 비활성화
 function doNotCall() {
-  if(!isMobile) {
-    const $callBtn = document.querySelector('.call_btn');
-
+  if (!isMobile) {
+    const $callBtn = document.querySelector(".call_btn");
     $callBtn.href = "javascript:sweetAlert('warning', '모바일 환경에서 이용하실 수 있습니다.')";
   }
 }
@@ -46,136 +51,139 @@ function doNotCall() {
 const CIRCLE_RADIUS = 20;
 const RADIUS = 32;
 const circle = new mojs.Shape({
-  left: 0, top: 0,
-  stroke:   { '#ff0081' : '#8b03ff' },
-  strokeWidth: { [2 * CIRCLE_RADIUS] : 0 },
-  fill:       'none',
-  scale:      { 0: 1 },
-  radius:     CIRCLE_RADIUS,
-  duration:   400,
-  easing:     'cubic.out'
+  left: 0,
+  top: 0,
+  stroke: { "#ff0081": "#8b03ff" },
+  strokeWidth: { [2 * CIRCLE_RADIUS]: 0 },
+  fill: "none",
+  scale: { 0: 1 },
+  radius: CIRCLE_RADIUS,
+  duration: 400,
+  easing: "cubic.out",
 });
 
 const burst = new mojs.Burst({
-  left: 0, top: 0,
-  radius:   { 4: RADIUS },
-  angle:    45,
-  count:    14,
+  left: 0,
+  top: 0,
+  radius: { 4: RADIUS },
+  angle: 45,
+  count: 14,
   timeline: { delay: 300 },
   children: {
-    radius:       2.5,
-    fill:         [
-      { '#ff0081' : '#ff0081' },
-      { '#8b03ff' : '#8b03ff' },
+    radius: 2.5,
+    fill: [
+      { "#ff0081": "#ff0081" },
+      { "#8b03ff": "#8b03ff" },
 
-      { '#ff0081' : '#ff0081' },
-      { '#faeb2c' : '#faeb2c' },
-      
-      { '#faeb2c' : '#faeb2c' },
-      { '#27d4b6' : '#27d4b6' },
-      
-      { '#8b03ff' : '#8b03ff' },
-      { '#ff0081' : '#ff0081' },
-      
-      { '#faeb2c' : '#faeb2c' },
-      { '#27d4b6' : '#27d4b6' },
-      
-      { '#27d4b6' : '#27d4b6' },
-      { '#ff0081' : '#ff0081' },
+      { "#ff0081": "#ff0081" },
+      { "#faeb2c": "#faeb2c" },
 
-      { '#faeb2c' : '#faeb2c' },
-      { '#27d4b6' : '#27d4b6' },
+      { "#faeb2c": "#faeb2c" },
+      { "#27d4b6": "#27d4b6" },
+
+      { "#8b03ff": "#8b03ff" },
+      { "#ff0081": "#ff0081" },
+
+      { "#faeb2c": "#faeb2c" },
+      { "#27d4b6": "#27d4b6" },
+
+      { "#27d4b6": "#27d4b6" },
+      { "#ff0081": "#ff0081" },
+
+      { "#faeb2c": "#faeb2c" },
+      { "#27d4b6": "#27d4b6" },
     ],
-    scale:        { 1: 0, easing: 'quad.in' },
-    pathScale:    [ .8, null ],
-    degreeShift:  [ 13, null ],
-    duration:     [ 500, 700 ],
-    easing:       'quint.out',
+    scale: { 1: 0, easing: "quad.in" },
+    pathScale: [0.8, null],
+    degreeShift: [13, null],
+    duration: [500, 700],
+    easing: "quint.out",
     // speed: .1
-  }
+  },
 });
 
 // 클릭 애니메이션
-const clickAnimation = e => {
-  const effectNone = e.target.getAttribute('data-mo-effect');
+const clickAnimation = (e) => {
+  const effectNone = e.target.getAttribute("data-mo-effect");
 
   // 만약 data-mo-effect가 none이라면 실행하지 않음
-  if(effectNone == 'none') {
+  if (effectNone == "none") {
     return false;
   }
 
-	const coords = { x: e.pageX, y: e.pageY };
+  const coords = { x: e.pageX, y: e.pageY };
 
-	burst.tune(coords).replay();  
+  burst.tune(coords).replay();
   circle.tune(coords).replay();
-}
+};
 
 // 이메일 팝업 열기
 function openEmailForm() {
-  const $emailPop = document.querySelector('.email_pop');
-  $emailPop.style.display = 'flex';
+  const $emailPop = document.querySelector(".email_pop");
+  $emailPop.style.display = "flex";
   lockBodyScroll();
 
   setTimeout(() => {
-    $emailPop.querySelector('.inner_wrap').classList.add('active');
+    $emailPop.querySelector(".inner_wrap").classList.add("active");
   }, 100);
 }
 
 // 이메일 팝업 닫기
 const closeEmailForm = () => {
-  const $emailPop = document.querySelector('.email_pop');
-  $emailPop.style.display = 'none';
-  $emailPop.querySelector('.inner_wrap').classList.remove('active');
+  const $emailPop = document.querySelector(".email_pop");
+  $emailPop.style.display = "none";
+  $emailPop.querySelector(".inner_wrap").classList.remove("active");
   runBodyScroll();
-}
+};
 
 // 이메일 보내기
 function sendEmail(obj) {
   // form data 검증
   const confirm = confirmEmailForm();
 
-  if(confirm?.callback) {
+  if (confirm?.callback) {
     // 필수값이 모두 들어있지 않은 경우
     confirm.callback();
     return false;
   } else {
     // 검증 완료된 폼을 전송
-    const $loadingPop = document.querySelector('.loading_pop');
+    const $loadingPop = document.querySelector(".loading_pop");
     // email js key값
-    const SERVICE_ID = 'service_y1f5vfg';
-    const TEMPLATE_ID = 'template_feu0pkq';
+    const SERVICE_ID = "service_y1f5vfg";
+    const TEMPLATE_ID = "template_feu0pkq";
 
     // 중복 전송 방지 & 로딩중 팝업 띄우기
-    obj.classList.add('loading');
-    obj.innerText = '전송중';
-    $loadingPop.classList.add('active');
+    obj.classList.add("loading");
+    obj.innerText = "전송중";
+    $loadingPop.classList.add("active");
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, confirm.formData, EMAIL_KEY)
-    .then(res => {
-        sweetAlert('success', '메일이 발송되었습니다.', closeEmailForm);
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, confirm.formData, EMAIL_KEY).then(
+      (res) => {
+        sweetAlert("success", "메일이 발송되었습니다.", closeEmailForm);
 
         // form 초기화
-        const $formArr = [...document.querySelectorAll('.email_pop input'), ...document.querySelectorAll('.email_pop textarea')];
+        const $formArr = [...document.querySelectorAll(".email_pop input"), ...document.querySelectorAll(".email_pop textarea")];
 
-        $formArr.forEach(item => {
-          item.value = '';
+        $formArr.forEach((item) => {
+          item.value = "";
         });
 
         // 버튼 초기화
-        obj.classList.remove('loading');
-        obj.innerText = '발송';
-        $loadingPop.classList.remove('active');
+        obj.classList.remove("loading");
+        obj.innerText = "발송";
+        $loadingPop.classList.remove("active");
       },
-      error => {
-        sweetAlert('error', '메일 발송에 실패했습니다.');
+      (error) => {
+        sweetAlert("error", "메일 발송에 실패했습니다.");
         console.log(error);
 
         // 버튼 초기화
-        obj.classList.remove('loading');
-        obj.innerText = '발송';
-        $loadingPop.classList.remove('active');
-      });
-    }
+        obj.classList.remove("loading");
+        obj.innerText = "발송";
+        $loadingPop.classList.remove("active");
+      }
+    );
+  }
 }
 
 // 이메일 양식 확인
@@ -183,93 +191,92 @@ function confirmEmailForm() {
   const confirmMap = getConfirmMap(); // 조건식 가져오기
   let result = {}; // 조건에 맞지 않을 시 경고창 띄우는 함수 & return 여부를 반환
 
-  for(let i = 0; i < confirmMap.length; i++) {
-    if(confirmMap[i].logic) {
+  for (let i = 0; i < confirmMap.length; i++) {
+    if (confirmMap[i].logic) {
       // 검증을 통과하지 못한 경우 사용할 함수를 result에 담아주기
-      result.callback = () => { 
-
+      result.callback = () => {
         // alert메시지를 띄워주는 함수
-        sweetAlert('error', confirmMap[i].alertMsg, () => {
-
+        sweetAlert("error", confirmMap[i].alertMsg, () => {
           // alert창의 확인버튼을 클릭하면 delay 이후 포커스 함수 실행
           setTimeout(() => {
             confirmMap[i].focus?.focus();
           }, 500);
-
-        })
+        });
       };
 
       return result;
     }
-  };
+  }
 
   // 검증에 통과한 경우 email 내용 담아주기
   result.formData = {
-    name : document.querySelector('[name="name"]').value,
-    phone : document.querySelector('[name="phone"]').value,
-    email : document.querySelector('[name="email"]').value,
-    text : document.querySelector('[name="text"]').value,
+    name: document.querySelector('[name="name"]').value,
+    phone: document.querySelector('[name="phone"]').value,
+    email: document.querySelector('[name="email"]').value,
+    text: document.querySelector('[name="text"]').value,
   };
-  
+
   return result;
 }
 
 // 이메일 양식 확인할 map 가져오기
 function getConfirmMap() {
   // 정규식
-  const regTelPhone= /^\d{2,3}-\d{3,4}-\d{4}$/;
+  const regTelPhone = /^\d{2,3}-\d{3,4}-\d{4}$/;
   const regPhone = /^\d{2,3}-\d{3,4}-\d{4}$/;
-  const regEmail= /^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/;
+  const regEmail = /^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/;
 
   // {메시지, 포커스할 element, 조건식}
   const confirmMap = [
-    { 
+    {
       // 이름이 공백일 때
-      alertMsg: '기업명을 입력해 주세요.',
+      alertMsg: "기업명을 입력해 주세요.",
       focus: document.querySelector('[name="name"]'),
-      logic : document.querySelector('[name="name"]').value == ""
+      logic: document.querySelector('[name="name"]').value == "",
     },
-    { 
+    {
       // 전화번호가 공백일 때
-      alertMsg: '전화번호를 입력해 주세요.',
+      alertMsg: "전화번호를 입력해 주세요.",
       focus: document.querySelector('[name="phone"]'),
-      logic : document.querySelector('[name="phone"]').value == ""
+      logic: document.querySelector('[name="phone"]').value == "",
     },
-    { 
+    {
       // 전화번호 양식이 맞지 않을 때
-      alertMsg: '전화번호 양식을 확인해 주세요.',
+      alertMsg: "전화번호 양식을 확인해 주세요.",
       focus: document.querySelector('[name="phone"]'),
-      logic : !regTelPhone.test(document.querySelector('[name="phone"]').value) && !regPhone.test(document.querySelector('[name="phone"]').value) && isNaN(Number(document.querySelector('[name="phone"]').value))
+      logic:
+        !regTelPhone.test(document.querySelector('[name="phone"]').value) &&
+        !regPhone.test(document.querySelector('[name="phone"]').value) &&
+        isNaN(Number(document.querySelector('[name="phone"]').value)),
     },
-    { 
+    {
       // 이메일 양식이 맞지 않을 때
-      alertMsg: '이메일 양식을 확인해 주세요.',
+      alertMsg: "이메일 양식을 확인해 주세요.",
       focus: document.querySelector('[name="email"]'),
-      logic : !regEmail.test(document.querySelector('[name="email"]').value) && document.querySelector('[name="email"]').value != ''
+      logic: !regEmail.test(document.querySelector('[name="email"]').value) && document.querySelector('[name="email"]').value != "",
     },
-    { 
+    {
       // 문의 내용이 없을 때
-      alertMsg: '내용을 입력해 주세요.',
+      alertMsg: "내용을 입력해 주세요.",
       focus: document.querySelector('[name="text"]'),
-      logic : document.querySelector('[name="text"]').value == ""
+      logic: document.querySelector('[name="text"]').value == "",
     },
   ];
 
   return confirmMap;
 }
 
-
 // === 기본 함수 ================================================================================================================================================================
 
 // 함수가 너무 자주 실행되지 않도록 제한(마지막으로 실행된 함수만)
 function debounce(callback, limit = 100) {
   let timeout;
-  return function(...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-          callback.apply(this, args);
-      }, limit);
-  }
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      callback.apply(this, args);
+    }, limit);
+  };
 }
 
 // 함수가 너무 자주 실행되지 않도록 제한(처음 실행된 함수만)
@@ -289,68 +296,70 @@ function debounce_leading(callback, limit = 100) {
 // 함수가 너무 자주 실행되지 않도록 제한(횟수 조절)
 function throttle(callback, limit = 100) {
   let waiting = false;
-  return function() {
-    if(!waiting) {
+  return function () {
+    if (!waiting) {
       callback.apply(this, arguments);
       waiting = true;
       setTimeout(() => {
         waiting = false;
       }, limit);
     }
-  }
+  };
 }
 
 // sweetalert2
 function sweetAlert(icon, title, callback) {
-	Swal.fire({
-		title: title,
-		icon: icon,
-		customClass: {
-			confirmButton: 'btn btn-type-round alert_btn'
-		},
-		buttonsStyling: false
-	})
-    .then((res) => {
-      callback && callback();
-    });
-
+  Swal.fire({
+    title: title,
+    icon: icon,
+    customClass: {
+      confirmButton: "btn btn-type-round alert_btn",
+    },
+    buttonsStyling: false,
+  }).then((res) => {
+    callback && callback();
+  });
 }
 
 // body 잠금
 function lockBodyScroll() {
-  document.body.style.overflowY = 'hidden';
+  document.body.style.overflowY = "hidden";
 }
 
 // body 잠금해제
 function runBodyScroll() {
-  document.body.style.overflowY = 'auto';
+  document.body.style.overflowY = "auto";
 }
 
 // 팝업창 닫기 함수
 function closePopup(obj) {
-  const popName = obj.getAttribute('data-pop-name');
-  document.querySelector(`.${popName}`).classList.remove('active');
-  document.querySelector(`.${popName}`).querySelectorAll('.gage')?.forEach(item => {
-    item.style.width = 0;
-  });
+  const popName = obj.getAttribute("data-pop-name");
+  document.querySelector(`.${popName}`).classList.remove("active");
+  document
+    .querySelector(`.${popName}`)
+    .querySelectorAll(".gage")
+    ?.forEach((item) => {
+      item.style.width = 0;
+    });
   runBodyScroll();
 }
 
 // 브라우저 구분 후 모바일 브라우저인 경우 css클래스 부여
 function detectMobileBrowser() {
-  if(isMobile) document.body.classList.add('mo-browser'); // 모바일인 경우 body에 클래스 부여
-  else return false; // 모바일이 아닌 경우 return
-
+  // 모바일이 아닌 경우 return false
+  !isMobile ?? false;
+  // 모바일인 경우 body에 클래스 부여
+  document.body.classList.add("mo-browser");
   // 브라우저에 따라 클래스 부여
-  moBrowserMap.forEach(item => {
-    item.logic && document.body.classList.add(item.className);
+  moBrowserMap.forEach((browser) => {
+    browser.logic && document.body.classList.add(browser.className);
   });
 }
 
 // 부모요소 삭제
 function removeParent(el) {
   const parent = el.parentNode;
-  parent.insertAdjacentElement('beforebegin', el);
+  parent.insertAdjacentElement("beforebegin", el);
   parent.remove();
 }
 
@@ -362,27 +371,27 @@ function removeParent(el) {
  */
 function removeParentAll(el, breakPoint) {
   const parent = el.parentNode;
-  parent.insertAdjacentElement('beforebegin', el); // 원하는 element 꺼내기
+  parent.insertAdjacentElement("beforebegin", el); // 원하는 element 꺼내기
   parent.remove(); // 부모요소 삭제
 
   // element를 꺼낸 후에도 부모요소가 있다면
-  if(el.parentNode) {
+  if (el.parentNode) {
     const isBreak = breakPoint && el.parentNode.classList.value.includes(breakPoint);
-    if(isBreak) {
+    if (isBreak) {
       // breakPoint가 존재하고, 부모요소가 breakPoint라면 return
       return true;
     } else {
       // 아닌 경우 스스로를 재귀적으로 호출
       removeParentAll(el, breakPoint);
     }
-  } 
+  }
 }
 
 // object, array자료형 deep copy
 function cloneObject(obj) {
   const isArr = Array.isArray(obj);
   let clone;
-  isArr ? clone = [] : clone = {}; // obj type 구분하여 빈 array or object 생성
+  isArr ? (clone = []) : (clone = {}); // obj type 구분하여 빈 array or object 생성
 
   for (let key in obj) {
     if (typeof obj[key] == "object" && obj[key] != null) {
@@ -414,16 +423,16 @@ function getDateGap(startDate, endDate) {
  */
 function D_DayCount(endDate, openTime = 0) {
   // 변수 선언
-  let obj = { origin : 0, day : 0, hour : 0, min : 0, sec : 0, ms : 0 }
+  let obj = { origin: 0, day: 0, hour: 0, min: 0, sec: 0, ms: 0 };
   // open시간 설정
   let open = 60 * 60 * 1000;
   open = (9 - openTime) * open;
 
   const start = new Date();
-  const end = new Date(endDate); 
-  const origin = (end.getTime() - start.getTime() - open); // 날짜 차이 계산 (ms)
+  const end = new Date(endDate);
+  const origin = end.getTime() - start.getTime() - open; // 날짜 차이 계산 (ms)
   // 날짜 차이가 음수인 경우 에러처리
-  if(origin < 0) {
+  if (origin < 0) {
     return obj;
   } else {
     // endDate까지 남은 시간(ms)를 단위에 맞게 변환하고 나머지 값은 더 작은 단위로 변환
@@ -437,14 +446,14 @@ function D_DayCount(endDate, openTime = 0) {
     // 나머지가 0인 상태에서 계산 시 결과값이 NaN이 되는 현상발생
     // 결과값이 NaN인 경우 0으로 치환
     const arr = [day, hour, min, sec, ms].map((item) => {
-      isNaN(item) ? item = 0 : null;
+      isNaN(item) ? (item = 0) : null;
       return item;
     });
 
     // 빈 object에 계산된 결과값 채우기
     arr.forEach((item, idx) => {
       // object key값 list
-      const objKey = ['day', 'hour', 'min', 'sec', 'ms'];
+      const objKey = ["day", "hour", "min", "sec", "ms"];
       // value는 소수점 제거 후 채워준다
       obj[objKey[idx]] = Math.floor(item);
     });
@@ -452,4 +461,94 @@ function D_DayCount(endDate, openTime = 0) {
     obj.origin = origin;
     return obj;
   }
+}
+
+// lerp함수
+function lerp(s, e, a) {
+  return s + (e - s) * a;
+}
+
+// 마우스 포인터 애니메이션
+let mouseX = 0,
+  mouseY = 0,
+  pointerX = 0,
+  pointerY = 0;
+
+class LerpMousePointer {
+  setCircle() {
+    const mPointer = document.createElement("div");
+    this.mPointer = mPointer;
+    mPointer.id = "mPointer";
+    document.body.append(mPointer);
+  }
+
+  render() {
+    const linkArr = [
+      ...document.querySelectorAll(".link"),
+      ...document.querySelectorAll("button"),
+      ...document.querySelectorAll("a"),
+      ...document.querySelectorAll("label"),
+    ];
+    linkArr.forEach((link) => {
+      link.addEventListener("mouseover", () => {
+        this.mPointer.classList.add("hover");
+      });
+
+      link.addEventListener("mouseleave", () => {
+        this.mPointer.classList.remove("hover");
+      });
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      this.mPointer.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+    });
+  }
+
+  frame() {
+    requestAnimationFrame(this.frame);
+
+    pointerX = lerp(pointerX, mouseX, 0.05);
+    pointerY = lerp(pointerY, mouseY, 0.05);
+  }
+}
+
+// find parent
+function findParent(child, str) {
+  if (!child.parentNode) return "부모요소가 존재하지 않습니다.";
+
+  const isClassname = { bool: str.charAt(0) == ".", str: str.split(".")[1] };
+  const isId = { bool: str.charAt(0) == "#", str: str.split("#")[1] };
+
+  if (isClassname.bool) return findParentClassname(child, isClassname.str);
+  else if (isId.bool) return findParentId(child, isId.str);
+  else return findParentTag(child, str);
+}
+
+// find parents classname
+function findParentClassname(child, classname) {
+  if (!child.parentNode) return "해당 class가 존재하지 않습니다.";
+
+  let classList = child.parentNode.classList?.value?.split(" ");
+  let hasClass = false;
+
+  classList?.forEach((item) => {
+    if (item == classname) hasClass = true;
+  });
+
+  return hasClass ? child.parentNode : findParentClassname(child.parentNode, classname);
+}
+// find parents id
+function findParentId(child, id) {
+  if (!child.parentNode) return "해당 id가 존재하지 않습니다.";
+  const hasId = child.parentNode.id == id;
+  return hasId ? child.parentNode : findParentId(child.parentNode, id);
+}
+// find parents tagname
+function findParentTag(child, tagname) {
+  if (!child.parentNode) return "해당 tag가 존재하지 않습니다.";
+  const isEqual = child.parentNode.tagName?.toLowerCase() == tagname.toLowerCase();
+  return isEqual ? child.parentNode : findParentTag(child.parentNode, tagname);
 }

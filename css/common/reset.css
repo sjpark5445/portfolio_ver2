@@ -95,6 +95,11 @@ textarea {resize: none;}
 
     /* 라이브러리 색상 */
     --swiper-theme-color : var(--neon-teal);
+
+    /* clip-path */
+    --shape-star : polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    --shape-trapezoid : polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    --shape-triangle : polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 /* layout */
@@ -139,3 +144,8 @@ html, body {color: var(--text-base);}
 .t-ellipsis-line3 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
 .t-ellipsis-line4 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;}
 .t-ellipsis-line5 {overflow: hidden; text-overflow: ellipsis; display: inline-block; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;}
+
+/* mouse effect */
+* {cursor: none !important;}
+#mPointer {width: 40px; height: 40px; position: fixed; top: 0; left: 0; transition: width 0.35s, height 0.35s, background-color .35s, opacity .35s; opacity: 0.7; border-radius: 50%; background-color: var(--neon-violet); pointer-events: none; z-index: 999;}
+#mPointer.hover {width: 60px; height: 60px; opacity: 0.3; background-color: #ccc;}

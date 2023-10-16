@@ -1,8 +1,7 @@
 // class
 class Header extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `<header class="flex">
+    this.innerHTML = `<header class="flex">
       <div class="inner_wrap flex">
         <div class="logo_box">
           <h2 class="logo">
@@ -15,9 +14,9 @@ class Header extends HTMLElement {
 
         <nav>
           <ul class="flex">
-            <li data-mo-effect="none">Home</li>
-            <li data-mo-effect="none">Profile</li>
-            <li data-mo-effect="none">Project</li>
+            <li class="link" data-mo-effect="none">Home</li>
+            <li class="link" data-mo-effect="none">Profile</li>
+            <li class="link" data-mo-effect="none">Project</li>
           </ul>
 
           <input type="checkbox" id="mo_toggle" class="hide">
@@ -30,20 +29,19 @@ class Header extends HTMLElement {
       </div>
     </header>`;
 
-    const pageNum = this.getAttribute('page-num');
-    const navList = document.querySelectorAll('header nav li');
+    const pageNum = this.getAttribute("page-num");
+    const navList = document.querySelectorAll("header nav li");
 
     // 헤더에 page-num번호가 있는 경우 해당하는 리스트에 'active' 클래스 부여
-    pageNum && navList[pageNum].classList.add('active');
+    pageNum && navList[pageNum].classList.add("active");
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
 class MoNav extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `<aside class="mo_nav">
+    this.innerHTML = `<aside class="mo_nav">
       <div class="inner_wrap">
         <nav>
           <ul>
@@ -64,29 +62,27 @@ class MoNav extends HTMLElement {
       </div>
     </aside>`;
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
 class Footer extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `<footer>
+    this.innerHTML = `<footer>
       <h2 class="hide">포트폴리오 footer</h2>
       <div class="inner_wrap flex">
-        <a href="tel:010-5445-5443" class="call_btn btn">전화하기</a>
-        <a href="javascript: openEmailForm();" class="email_btn btn">이메일 발송</a>
+        <a href="tel:010-5445-5443" class="call_btn btn link">전화하기</a>
+        <a href="javascript: openEmailForm();" class="email_btn btn link">이메일 발송</a>
       </div>
     </footer>`;
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
 class ProjectPop extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `<aside class="project_pop">
+    this.innerHTML = `<aside class="project_pop">
       <div class="inner_wrap pop_header">
         <button type="button" class="pop_close flex" data-pop-name="project_pop" onclick="closePopup(this);">
           <span></span>
@@ -224,14 +220,13 @@ class ProjectPop extends HTMLElement {
       </div>
     </aside>`;
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
 class EmailPopup extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `<aside class="email_pop">
+    this.innerHTML = `<aside class="email_pop">
       <div class="inner_wrap flex">
         <h3 class="hide">이메일 발송 팝업</h3>
         <p class="title">이메일 발송</p>
@@ -266,20 +261,19 @@ class EmailPopup extends HTMLElement {
       </div>
     </aside>`;
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
 class LoadingPopup extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 
-    `
+    this.innerHTML = `
       <div class="loading_pop flex">
         <img src="./image/icon/spinner.png">
       </div>
-    `
+    `;
 
-    this.classList.add('components');
+    this.classList.add("components");
   }
 }
 
@@ -296,4 +290,78 @@ customElements.define("loading-popup", LoadingPopup);
 //   componentList.forEach((wrap) => {
 //     removeParent(wrap.childNodes[0]);
 //   });
+// });
+
+class StarShape extends HTMLElement {
+  connectedCallback() {
+    this.bg = "yellow";
+    this.border = "orange";
+    this.innerHTML = `<div class="star">
+      <svg viewBox="0 0 264.96 252.54">
+        <defs>
+          <clipPath id="star-wrap">
+            <path style="fill:none;" d="M210.91,247.54a.55.55,0,0,1-.27-.08L137.4,209a10.53,10.53,0,0,0-9.84,0l-73.24,38.5a.51.51,0,0,1-.27.08.66.66,0,0,1-.46-.23.47.47,0,0,1-.1-.45l14-81.56a10.58,10.58,0,0,0-3-9.36L5.18,98.18A.51.51,0,0,1,5,97.6a.5.5,0,0,1,.47-.39l81.89-11.9a10.59,10.59,0,0,0,8-5.79L132,5.32a.52.52,0,0,1,.51-.32h0a.53.53,0,0,1,.52.32l36.62,74.2a10.57,10.57,0,0,0,8,5.79l81.89,11.9a.5.5,0,0,1,.46.39.49.49,0,0,1-.15.58l-59.25,57.76a10.58,10.58,0,0,0-3,9.36l14,81.56a.5.5,0,0,1-.11.45A.64.64,0,0,1,210.91,247.54Z"/>
+          </clipPath>
+        </defs> 
+        <g class="use-clip" style="clip-path:url(#star-wrap);">
+          <rect style="width: 0%; height: 100%; fill: ${this.bg};" />
+        </g>
+        <path style="fill: ${this.border};" shape-rendering="geometricPrecision" d="M132.48,15.58l32.65,66.16a15.57,15.57,0,0,0,11.73,8.51l73,10.61L197,152.36a15.57,15.57,0,0,0-4.48,13.79L205,238.86l-65.3-34.33a15.58,15.58,0,0,0-14.5,0l-65.3,34.33L72.4,166.15a15.54,15.54,0,0,0-4.48-13.79l-52.83-51.5,73-10.61a15.56,15.56,0,0,0,11.73-8.51l32.65-66.16m0-15.58a5.52,5.52,0,0,0-5,3.11L90.86,77.31a5.6,5.6,0,0,1-4.19,3L4.78,92.26a5.57,5.57,0,0,0-3.09,9.5l59.25,57.76a5.57,5.57,0,0,1,1.61,4.94L48.56,246a5.56,5.56,0,0,0,8.09,5.88l73.24-38.51a5.56,5.56,0,0,1,5.18,0l73.25,38.51a5.52,5.52,0,0,0,2.59.65A5.58,5.58,0,0,0,216.4,246l-14-81.55a5.59,5.59,0,0,1,1.6-4.94l59.25-57.76a5.57,5.57,0,0,0-3.09-9.5L178.3,80.36a5.6,5.6,0,0,1-4.2-3L137.48,3.11a5.51,5.51,0,0,0-5-3.11Z"/>
+      </svg>
+    </div>`;
+  }
+}
+
+customElements.define("star-shape", StarShape);
+
+class StarRatingBar {
+  constructor(wrapper) {
+    this.wrapper = wrapper;
+    this.maxRating = 5;
+  }
+
+  init() {
+    this.wrapper.querySelector(".star-range").addEventListener("input", (e) => {
+      this.#setRating(e);
+    });
+  }
+
+  #setRating(e) {
+    const starArr = this.wrapper.querySelectorAll(".star");
+    const rate = e.target.value / (e.target.max / this.maxRating);
+    const rateInt = Math.floor(rate);
+    const rateFloat = rate - rateInt;
+
+    // 별점 상태 초기화
+    this.#setStar(starArr, this.maxRating, "0%");
+
+    if (rateInt === 0 && rateFloat !== 0) {
+      // 평점이 0점대인 경우 첫 번째 별만 제어해준다
+      starArr[rateInt].querySelector(".use-clip rect").style.width = rateFloat * 100 + "%";
+    } else if (rateInt === 5) {
+      // 평점 5점인 경우 모든 별을 꽉 채워준다
+      this.#setStar(starArr, rateInt, "100%");
+    } else {
+      // 그 이외의 경우
+      // 평점의 정수 부분만큼 별을 꽉 채워주고, 남은 부분은 (소수 부분 * 100)%만큼 채워준다
+      this.#setStar(starArr, rateInt, "100%");
+      starArr[rateInt].querySelector(".use-clip rect").style.width = rateFloat * 100 + "%";
+    }
+
+    // 평점 텍스트를 변경해준다.
+    this.wrapper.parentNode.querySelector(".rating").innerText = rate;
+  }
+
+  #setStar(arr, length, percent) {
+    for (let i = 0; i < length; i++) {
+      arr[i].querySelector(".use-clip rect").style.width = percent;
+    }
+  }
+}
+
+// window.addEventListener("DOMContentLoaded", () => {
+//   const wrapper = document.querySelector(".star-wrapper .star-handler");
+//   const star = new StarRatingBar(wrapper);
+
+//   star.init();
 // });
