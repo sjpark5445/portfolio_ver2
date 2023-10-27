@@ -147,7 +147,8 @@ footer .email_btn::before {background: url(../../image/icon/envelope-solid.svg) 
 .project_pop .text_block .title {margin-bottom: 10px; justify-content: start; font-size: 28px; font-weight: 900; letter-spacing: 1px;}
 .project_pop .text_block .title .point {color: var(--neon-teal);}
 .project_pop .text_block .name {margin-bottom: 45px; display: block;}
-.project_pop .text_block .name [data-project-cont] {display: block;}
+.project_pop .text_block p.name[data-project-cont] {display: block; line-height: 1.5; color: #ddd;}
+.project_pop .text_block .name.link_none {color: #ccc; text-decoration: none;}
 .project_pop .text_block a.name {width: max-content; color: var(--neon-magenta); text-decoration: underline;}
 .project_pop .text_block .per_box {display: flex; flex-direction: column; align-items: start; gap: 5px; font-size: 12px;}
 .project_pop .text_block .per_box .graph {display: flex; align-items: center;}

@@ -99,19 +99,7 @@ class ProjectPop extends HTMLElement {
           <div class="swiper mySwiper" id="mockupSlider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="" alt="프로젝트 이미지1" data-image-num="0">
-              </div>
-              <div class="swiper-slide">
-                <img src="" alt="프로젝트 이미지2" data-image-num="1">
-              </div>
-              <div class="swiper-slide">
-                <img src="" alt="프로젝트 이미지3" data-image-num="2">
-              </div>
-              <div class="swiper-slide">
-                <img src="" alt="프로젝트 이미지4" data-image-num="3">
-              </div>
-              <div class="swiper-slide">
-                <img src="" alt="프로젝트 이미지5" data-image-num="4">
+                <img src="" alt="프로젝트 이미지1">
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -210,7 +198,7 @@ class ProjectPop extends HTMLElement {
               <span>업 후기</span>
             </p>
 
-            <p class="name">
+            <p class="name" data-project-cont="projectReview">
               <span data-project-cont="projectGood"></span>
               <span data-project-cont="projectBad"></span>
             </p>
